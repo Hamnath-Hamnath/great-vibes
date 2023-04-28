@@ -76,14 +76,14 @@ const Cards = ({
             <section className="flex">
               {details?.apply_type === "quick" && (
                 <button
-                  className={`font-poppins text-${FontSize} font-${FontWeight} text-[#FFF] bg-primary py-2 px-4 rounded`}
+                  className={`font-poppins text-${FontSize} font-${FontWeight} text-[#FFF] bg-primary py-2 px-4 rounded-md shadow-sm`}
                 >
                   Apply Now
                 </button>
               )}
               {details?.apply_type === "external" && (
                 <button
-                  className={`font-poppins text-${FontSize} font-${FontWeight} text-primary border border-primary bg-[#FFF] py-2 px-4 rounded`}
+                  className={`font-poppins text-${FontSize} font-${FontWeight} text-primary border border-primary bg-[#FFF] py-2 px-4 rounded-md`}
                 >
                   External Apply
                 </button>
