@@ -32,7 +32,7 @@ interface Errors {
 const FormComponent = ({ onClose }: any) => {
   const [steps, setSteps] = useState<number>(1);
   const { modal, cards }: any = useSelector((state) => state);
-  const {id}: any = modal;
+  const { id }: any = modal;
   const dispatch: any = useDispatch();
   const [formData, setFormData] = useState<FormState>({
     title: "",
@@ -67,7 +67,7 @@ const FormComponent = ({ onClose }: any) => {
       );
       setFormData(particularJobCard);
     }
-  }, [id]);
+  }, [id, cards?.cards]);
 
   const validate = () => {
     const errors: Errors | any = {};
@@ -106,10 +106,10 @@ const FormComponent = ({ onClose }: any) => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     if (validate()) {
-      if(id === undefined){
+      if (id === undefined) {
         dispatch(createJobCard(formData));
-      }else{
-        dispatch(editJobCard(formData))
+      } else {
+        dispatch(editJobCard(formData));
       }
       dispatch(hideModal());
     }
@@ -248,7 +248,7 @@ const FormComponent = ({ onClose }: any) => {
           </div>
           <div className="md:flex md:items-center md:justify-end">
             <button
-              className="shadow-sm font-poppins font-medium text-base bg-primary focus:shadow-outline text-[#FFF] font-bold py-2 px-4 rounded w-full md:w-auto"
+              className="shadow-sm font-poppins font-medium text-base bg-primary focus:shadow-outline text-[#FFF] font-bold py-2 px-4 rounded-md w-full md:w-auto"
               type="button"
               onClick={handleSteps}
             >
@@ -273,6 +273,11 @@ const FormComponent = ({ onClose }: any) => {
                   className="mb-3 md:mb-0 appearance-none border border-[#E6E6E6] rounded w-full py-2 px-3 text-sm font-poppins focus:outline-none placeholder-placeholder"
                   id="Experience"
                   type="text"
+                  onKeyPress={(event) => {
+                    if (!/[0-9]/.test(event.key)) {
+                      event.preventDefault();
+                    }
+                  }}
                   placeholder="Minimum"
                   value={experience.minimum}
                   onChange={(event) =>
@@ -291,6 +296,11 @@ const FormComponent = ({ onClose }: any) => {
                   className="appearance-none border border-[#E6E6E6] rounded w-full py-2 px-3 text-sm font-poppins focus:outline-none placeholder-placeholder"
                   id="Experience"
                   type="text"
+                  onKeyPress={(event) => {
+                    if (!/[0-9]/.test(event.key)) {
+                      event.preventDefault();
+                    }
+                  }}
                   placeholder="Maximum"
                   value={experience.maximum}
                   onChange={(event) =>
@@ -319,6 +329,11 @@ const FormComponent = ({ onClose }: any) => {
                   className="mb-3 md:mb-0 appearance-none border border-[#E6E6E6] rounded w-full py-2 px-3 text-sm font-poppins focus:outline-none placeholder-placeholder"
                   id="Salary"
                   type="text"
+                  onKeyPress={(event) => {
+                    if (!/[0-9]/.test(event.key)) {
+                      event.preventDefault();
+                    }
+                  }}
                   placeholder="Minimum"
                   value={salary.minimum}
                   onChange={(event) =>
@@ -337,6 +352,11 @@ const FormComponent = ({ onClose }: any) => {
                   className="appearance-none border border-[#E6E6E6] rounded w-full py-2 px-3 text-sm font-poppins focus:outline-none placeholder-placeholder"
                   id="Remote"
                   type="text"
+                  onKeyPress={(event) => {
+                    if (!/[0-9]/.test(event.key)) {
+                      event.preventDefault();
+                    }
+                  }}
                   placeholder="Maximum"
                   value={salary.maximum}
                   onChange={(event) =>
@@ -363,6 +383,11 @@ const FormComponent = ({ onClose }: any) => {
               className="appearance-none border border-[#E6E6E6] rounded w-full py-2 px-3 text-sm font-poppins focus:outline-none placeholder-placeholder"
               id="Total"
               type="text"
+              onKeyPress={(event) => {
+                if (!/[0-9]/.test(event.key)) {
+                  event.preventDefault();
+                }
+              }}
               placeholder="ex. 100"
               value={total_employees}
               onChange={(event) =>
@@ -420,7 +445,7 @@ const FormComponent = ({ onClose }: any) => {
           </div>
           <div className="md:flex md:items-center md:justify-end">
             <button
-              className="shadow-sm w-full md:w-auto font-poppins font-medium text-base bg-primary focus:shadow-outline text-[#FFF] font-bold py-2 px-4 rounded"
+              className="shadow-sm w-full md:w-auto font-poppins font-medium text-base bg-primary focus:shadow-outline text-[#FFF] font-bold py-2 px-4 rounded-md"
               type="submit"
               onClick={handleSubmit}
             >

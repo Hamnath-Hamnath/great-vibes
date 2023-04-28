@@ -5,7 +5,8 @@ import {
 } from "../constants/cardsConstants";
 
 export default function cardReducers(state = {
-    cards: []
+    cards: [],
+    loading : false
 }, action) {
     switch (action.type) {
         case DETAILS_REQUEST:

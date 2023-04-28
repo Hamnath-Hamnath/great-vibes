@@ -59,20 +59,17 @@ const createJobCard = (items) => async (dispatch, getState) => {
 const editJobCard = (items) => async (dispatch, getState) => {
   try {
     const {
-      cards,
       modal
     } = getState();
     const {
       id
     } = modal;
-    console.log(id)
-    console.log(items)
     dispatch({
       type: DETAILS_REQUEST,
     });
     const data = await editItems(id, items)
-    if (data.status === 201) {
-      const updated_data = [...cards.cards, data.data]
+    if (data.status === 200) {
+      const updated_data = await readItems()
       dispatch({
         type: DETAILS_SUCCESS,
         payload: updated_data,

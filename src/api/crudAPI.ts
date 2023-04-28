@@ -26,7 +26,7 @@ const readItems = async () => {
 
 const editItems = async (id: number|string,items: {}) => {
   try {
-    const data: {} | any = await axios.post(
+    const data: {} | any = await axios.put(
       `${API_BASE_URL}/api/v1/details/${id}`,
       items
     );

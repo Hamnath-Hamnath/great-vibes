@@ -5,7 +5,7 @@ type Props = {
 };
 
 const MainLayout = ({ children }: Props) => {
-  return <div className="">{children}</div>;
+  return <div className="mx-5">{children}</div>;
 };
 
 export default MainLayout;
